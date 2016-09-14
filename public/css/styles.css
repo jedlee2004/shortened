@@ -1,0 +1,106 @@
+.btn:focus, .btn-shorten:focus{
+  outline: 0 !important;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: #37A1B0;
+}
+
+body {
+  color: #fff;
+  text-align: left;
+  font-family: 'Baloo Chettan', cursive;
+}
+
+.btn-shorten {
+  color: #ffffff;
+  background-color: #50CF2B;
+  border: none;
+}
+
+.btn-random {
+  color: #ffffff;
+  background-color: #50CF2B;
+  border: none; 
+}
+
+.btn-shorten:hover,
+.btn-shorten:focus,
+.btn-shorten:active,
+.btn-shorten.active,
+
+ {
+  color: #ffffff;
+  background-color: #29a329;
+  border: none;
+}
+
+.site-wrapper {
+  display: table;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
+.site-wrapper-inner {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.main-container {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 80px;
+}
+
+.inner {
+  padding: 30px;
+}
+
+.inner h4 {
+  padding-bottom: 30px;
+}
+
+.glyphicon-fire {
+  font-size: 3em;
+}
+
+.inner h1 {
+  margin-top: 5px;
+}
+
+#link {
+  display: none;
+  padding-top: 15px;
+}
+
+#link a{
+  color: #ffffff;
+  font-size: 1.5em;
+  margin-right: 20px;
+}
+
+#error {
+  display: none;
+  padding-top: 15px;
+}
+
+#error a{
+  color: #ffffff;
+  font-size: 1em;
+  margin-right: 20px;
+}
+
+@media (min-width: 768px) {
+  .main-container {
+    width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .main-container {
+    width: 700px;
+  }
+}
