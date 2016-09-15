@@ -30,25 +30,42 @@ describe('Router Paths', function () {
     it('responds to /:short', function testSlash(done) {
         request
         .get('/:short')
-        .expect(200, done);
+        .expect(200)
+        .end(function(err, res) {
+        if (err) return done(err);
+        done();
+      });
     });
 
-    it('responds to /new/:url', function testSlash(done) {
+    it('responds to /new/', function testSlash(done) {
+        var url = ''
         request
-        .get('/new/:url')
-        .expect(200, done);
+        .get('/new/')
+        .expect(200)
+        .end(function(err, res) {
+        if (err) return done(err);
+        done();
+      });
     });
 
     it('responds to /', function testSlash(done) {
         request
         .get('/')
-        .expect(200, done);
+        .expect(200)
+        .end(function(err, res) {
+        if (err) return done(err);
+        done();
+      });
     });
 
     it('responds to /', function testSlash(done) {
         request
         .get('/')
-        .expect(200, done);
+        .expect(200)
+        .end(function(err, res) {
+        if (err) return done(err);
+        done();
+      });
     }); 
      
     /*
@@ -72,4 +89,15 @@ describe('Router Paths', function () {
             }
         }
     });*/
+
+    /*
+    reqest.post('/new/')
+    .type('form')
+    .send(data)
+    .set('Accept', /applicatoin\/json/)
+    .expect(200)
+    .end(function (err, res) {
+        done(); 
+    });
+    */
 });

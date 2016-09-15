@@ -20,7 +20,7 @@ body {
   border: none;
 }
 
-.btn-random {
+.btn-lengthen {
   color: #ffffff;
   background-color: #50CF2B;
   border: none; 
@@ -30,6 +30,10 @@ body {
 .btn-shorten:focus,
 .btn-shorten:active,
 .btn-shorten.active,
+.btn-lengthen:hover,
+.btn-lengthen:focus,
+.btn-lengthen:active,
+.btn-lengthen.active
 
  {
   color: #ffffff;
@@ -77,6 +81,17 @@ body {
 }
 
 #link a{
+  color: #ffffff;
+  font-size: 1.5em;
+  margin-right: 20px;
+}
+
+#short {
+  display: none;
+  padding-top: 15px;
+}
+
+#short a{
   color: #ffffff;
   font-size: 1.5em;
   margin-right: 20px;
