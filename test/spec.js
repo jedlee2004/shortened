@@ -1,5 +1,7 @@
 var assert = require('chai').assert;
 var expect = require('chai').expect;
+var should = require('chai').should(); 
+var ejs = require('ejs'); 
  
 var mongoose = require('mongoose'); 
 //var config = require('../config'); 
@@ -17,12 +19,64 @@ describe('Router Paths', function () {
         request.get('/')
         .expect('Content-Type', 'text/html; charset=utf-8')
         .expect(200)
+        .expect(function (res, err) {
+            console.log(res);
+            console.log(res.text); 
+            var html = ejs.render('../views/index.html');
+            res.should.match("<title>URL Shortener - Jedediah</title>"); 
+            res.text.should.have.length(1803)
+            
+            //expect(res.body).to.have.length(1803);
+            //expect(res.boy).to.contain('<title>URL Shortener - Jedediah</>'); 
+            done(); 
+        }); 
+    });
+
+    it('should return a shortened url form /new', function(done) {
+        var path = 'new/?url=http://iscsuspension-na.com/store/#!/BMW-3-Series-06-11-E90-E91-E92-X-Drive-ISC-Adjustable-Coilover-Car-Suspension/p/52902083/category=12617117'; 
+        var original = 'http://iscsuspension-na.com/store/#!/BMW-3-Series-06-11-E90-E91-E92-X-Drive-ISC-Adjustable-Coilover-Car-Suspension/p/52902083/category=12617117'
+        request.get(path)
+        .expect('Content-Type', 'JSON')
+        .expect(200)
+        .end(function(err, res) {
+            if (err) {
+                throw err;
+            }
+            res.body.should.have.property('original_url');
+            res.body.should.have.property('short_url'); 
+            res.body.original_url.should.equal(original);
+            done(); 
+        });
+    }); 
+
+    it('should return a shortened url form /short', function(done) {
+        var path = 'short/?url=rk7kfoH2'; 
+        var original = 'https://careercup.com/page'
+        request.get(path)
+        .expect('Content-Type', 'JSON')
+        .expect(200)
+        .end(function(err, res) {
+            if (err) {
+                throw err;
+            }
+            res.body.should.have.property('original_url');
+            res.body.should.have.property('short_url'); 
+            res.body.original_url.should.equal(original);
+            done(); 
+        });
+    }); 
+
+
+    it('should redirect to proper stored url /:id', function (done) {
+        var id = 'BJLOMML3';
+        request.get('/BJLOMML3')
+        .expect('Content-Type', 'JSON')
+        .expect(302)
+        .expect('Location', )
         .end(function (err, res) {
-            var expectedResponse = {};
             if(err) {
                 throw err;
             }
-            expect(res.body).to.equal(expectedResponse);
             done(); 
         }); 
     });
@@ -68,7 +122,7 @@ describe('Router Paths', function () {
       });
     }); 
      
-    /*
+
     it('should redirect', function(done) {
         var redirects = [];
         request.get('/new/:url')
@@ -88,9 +142,9 @@ describe('Router Paths', function () {
                 done(err); 
             }
         }
-    });*/
+    });
 
-    /*
+
     reqest.post('/new/')
     .type('form')
     .send(data)
@@ -99,5 +153,5 @@ describe('Router Paths', function () {
     .end(function (err, res) {
         done(); 
     });
-    */
+*/
 });

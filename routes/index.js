@@ -17,6 +17,12 @@ router.get('/', function (req, res, next) {
   res.render('index', {host: local });
 });
 
+// GET test page
+router.get('/test', function(req, res, next) {
+  var local = req.get('host');
+  res.render('testrunner', {host: local}); 
+})
+
 // GET with url param, validate url, exists, if not create short url
 router.get('/new', function (req, res, next) {
    //:url(*)
@@ -69,7 +75,14 @@ router.get('/short', function (req, res, next) {
       console.log("Connected to mlab server")
 
       var collection = db.collection('links');
-      var params = req.query.url;
+      var url = req.query.url;
+      var url_array = url.split('/');
+      var params; 
+      if(url_array.length > 1){
+        params = url_array[1]; 
+      } else {
+        params = url; 
+      }
       var local = req.get('host') + "/";
       var findLink = function (db, callback) {
         collection.findOne({ "short": params }, { url: 1, _id: 0 }, function (err, doc) {
@@ -117,32 +130,5 @@ router.get('/:id', function (req, res, next) {
     };
   });
 });
- 
- /*
- router.get('/:id', function(req, res, next) {
-   if(req.id === null){
-     res.send({error: 'No ID was entered'});
-   } else {
-     MongoClient.connect(mLab, function (err, db) {
-       var collection = db.collection('links');
-       var params = req.id;
-       var local = req.get('host') + '/';
-       var findLink = function (db, callback) {
-         collection.findOne({ "short": params }, { url: 1, _id: 0 }, function (err, doc) {
-         if(doc != null) {
-           res.redirect(doc.url);
-           res.send('<meta http-equiv="refresh" content="0;url=http://'+ doc.url +'">');
-          } else {
-            res.json({ error: "No corresponding shortlink found in the database for " + params + "." });
-          };
-        });
-       };
 
-       findLink(db, function () {
-         db.close();
-        });
-      })
-    }
- })
- */
 module.exports = router;
