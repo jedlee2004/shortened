@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var fs = require('fs'); 
 var routes = require('./routes/index');
-var config = require('./config');
+//var config = require('./config');
  
 var app = express();
 
@@ -44,7 +44,7 @@ app.use( function(req, res, next) {
 })
 
 // setting server port
-app.set('port', process.env.PORT || config.port);
+app.set('port', process.env.PORT || 3000);
 
 // server setup 
 var server = app.listen(app.get('port'), function () {

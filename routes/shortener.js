@@ -2,13 +2,13 @@
 
 var Url = require('../models/url'); 
 var request = require('request'); 
-var config = require('../config');
+//var config = require('../config');
 
 // accessing random word api and returning json body
 exports.retrieveRandomWord = function (req, res) {
     var options = {
-        host: config.random_api.host,
-        path: config.random_api.path,
+        //host: config.random_api.host,
+        //path: config.random_api.path,
         port: 80,
         method: 'GET'
     };

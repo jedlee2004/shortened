@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var mongodb = require('mongodb');
-var config = require('../config');
-var mLab = 'mongodb://' + config.db.host + '/' + config.db.name;
+//var config = require('../config');
+var mLab = 'mongodb://jedlee2004:guniGuhGuh2@ds019846.mlab.com:19846/jeds_url_shortener';
 var MongoClient = mongodb.MongoClient
 
 var shortid = require('shortid');

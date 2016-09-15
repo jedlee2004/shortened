@@ -1,9 +1,9 @@
 var request = require('request');
-var config = require('../config');
+//var config = require('../config');
 
 exports.random_word = function(req, res) {
     var options = {
-        url: config.random_api, 
+        //url: config.random_api, 
         method: 'GET'
     };
     request(options, function(error, response, body) {

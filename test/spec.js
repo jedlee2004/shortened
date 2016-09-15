@@ -2,7 +2,7 @@ var assert = require('chai').assert;
 var expect = require('chai').expect;
  
 var mongoose = require('mongoose'); 
-var config = require('../config'); 
+//var config = require('../config'); 
 var routes = require('../routes/index');
 
 //passing the app to supertest for site setup
@@ -11,7 +11,7 @@ var request = require('supertest')(app);
 
 describe('Router Paths', function () {
     // microservice url to be tested 
-    var url = config.webhost;
+    //var url = config.webhost;
  
     it('responds to /', function indexRoute(done) {
         request.get('/')
